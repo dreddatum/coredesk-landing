@@ -1,139 +1,250 @@
 <!DOCTYPE html>
-<html class="dark" lang="cs">
+<html lang="cs">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Geist+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #080808; 
-            color: #e4e2e4;
-            letter-spacing: -0.01em;
-        }
-        .mono { font-family: 'Geist Mono', monospace; }
-        .bento-card { 
-            background: #0e0e10; 
-            border: 1px solid rgba(66, 71, 84, 0.3); 
-            transition: all 0.2s ease-in-out;
-        }
-        .bento-card:hover { border-color: #3b82f6; background: #121214; }
-        .text-bright { color: #fcfcfc; }
-        .text-dim { color: #a1a1aa; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoreDesk</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --border: #1f2937;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #3b82f6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  border: none;
+}
+
+.btn-secondary {
+  color: var(--text);
+}
+
+.section {
+  margin-bottom: 100px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.card h3 {
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--border);
+  margin-left: 6px;
+}
+
+.soon {
+  opacity: 0.5;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+.step-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.cta {
+  background: #020617;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 60px;
+}
+</style>
 </head>
-<body class="selection:bg-[#3b82f6]/40">
 
-    <nav class="flex justify-between items-center px-10 py-8 border-b border-[#424754]/10 bg-[#080808]">
-        <div class="flex items-center gap-4">
-            <div class="grid grid-cols-3 gap-1 w-5 h-5">
-                <div class="bg-[#3b82f6] w-1.5 h-1.5"></div><div class="bg-[#3b82f6] w-1.5 h-1.5"></div><div class="bg-[#3b82f6] w-1.5 h-1.5"></div>
-                <div class="bg-[#3b82f6] w-1.5 h-1.5"></div><div class="border border-[#3b82f6] w-1.5 h-1.5 text-center"></div><div class="bg-[#3b82f6] w-1.5 h-1.5"></div>
-                <div class="bg-[#3b82f6] w-1.5 h-1.5"></div><div class="bg-[#3b82f6] w-1.5 h-1.5"></div><div class="bg-[#3b82f6] w-1.5 h-1.5"></div>
-            </div>
-            <span class="text-2xl font-black tracking-tighter uppercase text-bright">CoreDesk <span class="text-[#3b82f6]">Solutions</span></span>
-        </div>
-        <div class="hidden md:flex gap-10 items-center mono text-[11px] font-bold uppercase tracking-widest text-dim">
-            <a href="#roadmap" class="hover:text-[#3b82f6] transition-colors">Infrastruktura</a>
-            <a href="#" class="bg-[#3b82f6] text-white px-5 py-2 rounded text-xs font-black tracking-widest shadow-lg shadow-blue-900/20">ENTERPRISE DEMO</a>
-        </div>
-    </nav>
+<body>
 
-    <header class="px-10 py-24 text-center max-w-6xl mx-auto">
-        <div class="inline-flex items-center gap-2 bg-[#3b82f6]/10 border border-[#3b82f6]/20 px-4 py-1.5 rounded-full mb-8">
-            <span class="mono text-[11px] text-[#3b82f6] font-bold uppercase tracking-[0.2em]">Srovnávací Engine v2.4</span>
-        </div>
-        <h1 class="text-6xl md:text-9xl font-black tracking-tighter mb-8 leading-[0.85] text-bright">
-            ANALÝZA BEZ ČTENÍ.<br/><span class="text-[#3b82f6]">DATA V ŘÁDU.</span>
-        </h1>
-        <p class="text-dim text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
-            CoreDesk transformuje chaotické PDF nabídky do struktury. 
-            Okamžité srovnání položek pro stavebnictví a strojírenství.
-        </p>
-        <div class="flex flex-wrap justify-center gap-6 mono text-[12px] text-dim font-bold uppercase tracking-[0.3em]">
-            <span>// STAVEBNICTVÍ</span><span>// ZDRAVOTNICTVÍ</span><span>// STROJÍRENSTVÍ</span>
-        </div>
-    </header>
+<div class="container">
 
-    <main class="px-10 py-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <div class="md:col-span-2 bento-card p-10 flex flex-col justify-between rounded-lg">
-            <div>
-                <div class="flex justify-between items-start mb-10">
-                    <h3 class="text-4xl font-black tracking-tight text-bright uppercase leading-none">Vytěžování<br/>nabídek</h3>
-                    <span class="mono text-[11px] text-[#3b82f6] border-2 border-[#3b82f6] px-3 py-1 uppercase font-black">Active Parser</span>
-                </div>
-                <p class="text-dim text-lg mb-10 max-w-lg font-medium leading-relaxed">
-                    Srovnání cenových nabídek na úrovni SKU. AI analyzuje rozsáhlá PDF a identifikuje anomálie během sekund.
-                </p>
-                <div class="bg-[#080808] p-8 border border-[#424754]/30 rounded grid grid-cols-2 gap-10">
-                    <div class="flex flex-col gap-1">
-                        <span class="mono text-[11px] text-dim uppercase tracking-widest font-bold">PŘESNOST DAT:</span>
-                        <span class="text-4xl font-black text-[#3b82f6]">99.8%</span>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <span class="mono text-[11px] text-dim uppercase tracking-widest font-bold">REDUKCE ADM:</span>
-                        <span class="text-4xl font-black text-[#27ae60]">-85%</span>
-                    </div>
-                </div>
-            </div>
-            <button class="mt-12 mono text-sm font-black uppercase tracking-[0.3em] text-[#3b82f6] flex items-center gap-3 group">
-                SPUSTIT ANALYTICKÝ TERMINÁL <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-            </button>
-        </div>
+<header>
+  <div class="logo">coredesk</div>
+</header>
 
-        <div class="bento-card p-10 flex flex-col justify-between rounded-lg">
-            <div>
-                <h3 class="text-2xl font-black mb-6 text-bright uppercase">Smluvní audit</h3>
-                <p class="text-dim text-sm leading-relaxed mb-8 font-medium">
-                    Automatická revize smluvních doložek a penalizací. Hlídáme shodu s vaším nákupním řádem bez lidské chyby.
-                </p>
-            </div>
-            <div class="mono text-[11px] text-dim pt-6 border-t border-[#424754]/20 font-bold uppercase tracking-widest">
-                STATUS: AUDIT_READY
-            </div>
-        </div>
+<section class="hero">
+  <h1>Platforma pro moderní nákup.</h1>
+  <p>Moduly pro řízení tendru, evidenci odpadů, analýzu smluv a automatizaci procesů.</p>
+  <div class="buttons">
+    <a href="https://app.coredesk.cz" class="btn btn-primary">Přihlásit se</a>
+    <a href="#modules" class="btn btn-secondary">Zjistit více</a>
+  </div>
+</section>
 
-        <div id="roadmap" class="md:col-span-3 mt-16 pt-16 border-t border-[#424754]/20">
-            <h2 class="mono text-[12px] font-black uppercase tracking-[0.5em] text-[#3b82f6] mb-12">Log vývoje platformy 2026</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-[#424754]/30 border border-[#424754]/30">
-                <div class="bg-[#080808] p-8">
-                    <span class="mono text-[10px] text-[#3b82f6] mb-4 block">// Q1_2026</span>
-                    <h4 class="font-black text-sm uppercase mb-3 text-bright">AI Srovnávač</h4>
-                    <p class="text-xs text-dim leading-relaxed font-medium">Multi-PDF parsování a mapování na skladové karty.</p>
-                </div>
-                <div class="bg-[#080808] p-8">
-                    <span class="mono text-[10px] text-[#3b82f6] mb-4 block">// Q2_2026</span>
-                    <h4 class="font-black text-sm uppercase mb-3 text-bright">Risk Engine</h4>
-                    <p class="text-xs text-dim leading-relaxed font-medium">Detekce rizikových doložek ve smlouvách subdodavatelů.</p>
-                </div>
-                <div class="bg-[#080808] p-8">
-                    <span class="mono text-[10px] text-[#3b82f6] mb-4 block">// Q3_2026</span>
-                    <h4 class="font-black text-sm uppercase mb-3 text-bright">Sector Moduly</h4>
-                    <p class="text-xs text-dim leading-relaxed font-medium">Specializace na stavební rozpočty a zdravotnictví.</p>
-                </div>
-                <div class="bg-[#080808] p-8 border-l border-[#3b82f6]/40">
-                    <span class="mono text-[10px] text-[#27ae60] mb-4 block">// Q4_2026</span>
-                    <h4 class="font-black text-sm uppercase mb-3 text-bright">CoreDesk Hub</h4>
-                    <p class="text-xs text-dim leading-relaxed font-medium">Plná integrace ERP a automatizace objednávek.</p>
-                </div>
-            </div>
-        </div>
-    </main>
+<section id="modules" class="section">
+  <div class="grid">
+    <div class="card">
+      <h3>TendrAI</h3>
+      <p>Porovnání nabídek dodavatelů.</p>
+    </div>
 
-    <footer class="px-10 py-20 border-t border-[#424754]/10 mt-20 text-center md:text-left">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-            <div class="mono text-[11px] text-dim uppercase tracking-widest font-bold">
-                © 2026 COREDESK SOLUTIONS. Všechna práva vyhrazena.
-            </div>
-            <div class="flex gap-10 mono text-[10px] text-dim uppercase font-bold">
-                <span>ISO 27001 Certified</span>
-                <span>Data in EU</span>
-            </div>
-        </div>
-    </footer>
+    <div class="card">
+      <h3>Evidence odpadů</h3>
+      <p>Evidence a reporting odpadů.</p>
+    </div>
+
+    <div class="card">
+      <h3>Analýza smluv</h3>
+      <p>AI právní analýza dodavatelských smluv.</p>
+    </div>
+
+    <div class="card soon">
+      <h3>Stavební deník <span class="badge">SOON</span></h3>
+      <p>Připravujeme.</p>
+    </div>
+
+    <div class="card soon">
+      <h3>Bezpečnostní listy <span class="badge">SOON</span></h3>
+      <p>Připravujeme.</p>
+    </div>
+
+    <div class="card soon">
+      <h3>Automatizace faktur <span class="badge">SOON</span></h3>
+      <p>Připravujeme.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="steps">
+    <div>
+      <div class="step-number">1</div>
+      <p>Nahrajte nabídky</p>
+    </div>
+    <div>
+      <div class="step-number">2</div>
+      <p>AI analyzuje data</p>
+    </div>
+    <div>
+      <div class="step-number">3</div>
+      <p>Dostanete doporučení</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="cta">
+    <h2>Začněte dnes.</h2>
+    <br>
+    <a href="https://app.coredesk.cz" class="btn btn-primary">Otevřít aplikaci</a>
+  </div>
+</section>
+
+<footer>
+  © CoreDesk 2026 · <a href="https://app.coredesk.cz" style="color:#3b82f6;">app.coredesk.cz</a>
+</footer>
+
+</div>
 
 </body>
 </html>
